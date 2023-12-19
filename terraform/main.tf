@@ -1,8 +1,8 @@
-## S3 state bucket
-resource "aws_s3_bucket" "tfstate" {
-  bucket        = "cloudservices-terraform-state-fison"
+provider "aws" {
+  region = "eu-west-2"
 }
-resource "aws_s3_bucket_acl" "tfstate" {
-  bucket = aws_s3_bucket.tfstate.id
-  acl    = "private"
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
 }
