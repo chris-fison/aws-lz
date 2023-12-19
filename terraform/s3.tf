@@ -1,8 +1,3 @@
-provider "aws" {
-#   profile = "default"
-  region  = "eu-west-2"
-}
-
 resource "aws_s3_bucket" "cf_s3_bucket" {
 bucket = "lz-fisontech-state"
 }
