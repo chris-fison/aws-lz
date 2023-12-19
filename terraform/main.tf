@@ -14,3 +14,19 @@ terraform {
     dynamodb_table     = "aws-lz-tfstate-cdb"
   }
 }
+
+
+# Define the provider (AWS in this case)
+provider "aws" {
+  region = "eu-west-2"  # Change this to your preferred AWS region
+}
+
+# Define the EC2 instance
+resource "aws_instance" "example_instance" {
+  ami           = "ami-0c55b159cbfafe1f0"  # Change this to the desired AMI ID
+  instance_type = "t2.micro"               # Change this to the desired instance type
+
+  tags = {
+    Name = "example-instance"
+  }
+}
