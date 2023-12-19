@@ -7,7 +7,7 @@ terraform {
       key = "global/s3/terraform.tfstate"
       region= "eu-west-2"
       # Replace this with your DynamoDB table name!
-      dynamodb_table = "YOUR_DYNAMODB_TABLE_NAME_HERE"
+      dynamodb_table = "aws-lz-tfstate-cdb"
       encrypt        = true
      }
 }
