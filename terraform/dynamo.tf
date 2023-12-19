@@ -1,8 +1,3 @@
-provider "aws" {
-#   profile = "default"
-  region  = "eu-west-2"
-}
-
 resource "aws_dynamodb_table" "dynamodb-terraform-state-lock" {
   name = "terraform-state-lock-dynamo"
   hash_key = "LockID"
