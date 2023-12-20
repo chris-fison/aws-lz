@@ -17,11 +17,11 @@ ARG TERRASCAN_VERSION=1.18.9
 ARG TFLINT_AWS_RULESET_VERSION=0.28.0
 # https://github.com/terraform-linters/tflint-ruleset-aws
 
-RUN cd /tmp/ \
-    && git clone https://github.com/awslabs/aws-code-habits.git \
-    && cd aws-code-habits \
-    && make devcontainer/terraform/init \
-    && rm -rf /tmp/aws-code-habits
+# RUN cd /tmp/ \
+#     && git clone https://github.com/awslabs/aws-code-habits.git \
+#     && cd aws-code-habits \
+#     && make devcontainer/terraform/init \
+#     && rm -rf /tmp/aws-code-habits
 
 USER root
 
