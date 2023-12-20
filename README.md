@@ -1,5 +1,13 @@
 # aws-lz
-A Git Repo for an AWS Landing Zone Project
+A Git Repo for a basic AWS Landing Zone Project
+
+A great launchpad for anyoone wanting to DevOps ther TF code and make life a bit easier.
+
+What does this git include?
+
+- Containerized local Docker with full Terraform, AWS CLI and various other extentions to help keep your team aligned. Fully integrated into Visual Studio Code.
+- A CICD pipeline which will spin up a container which will use a IAM role in AWS to create Terraform resources, it'll also store Terraform state in S3 and utilize DynamoDB for LockIDs.
+- An example of a resource (VPC) deployed as part of the terraform code.
 
 How to use this repo;
 
@@ -19,6 +27,7 @@ You'll need to perform the following on your system to get the best of this repo
  - sl C:\Git\Projects
  - git clone https://github.com/chris-fison/aws-lz.git
  - . code
+ - git checkout -b production
 
 You'll at this point probably want to push the cloned git up to your own git repo, once done read the rest of the docucumentation as theres further configuration needed and I explain what things do.
 
@@ -105,4 +114,14 @@ terraform {
   }
 }
 
-Once you've hit save and synced with your repo, you should see github actions kick off (use the extention to monitor)
+Once you've hit save and synced with your repo, you should see github actions kick off (use the extention to monitor).
+
+The next thing to look at, is how you merge your repos to safeguard the environment.
+
+I would suggest the following;
+
+Create a new branch each time you make a series of changes, i.e;
+
+- git checkout -b production-adding-vpc
+
+You can then 
