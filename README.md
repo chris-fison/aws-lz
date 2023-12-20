@@ -26,6 +26,13 @@ AWS Account - Free (CC is required for sign-up).
 - DynamoDB costs a little bit more, very minimal though.
 - Resources, only VPCs are deployed for the example.
 
+Generally advisable though to set a monthly budget on your AWS account, just incase.
+
+A couple boring costing links;
+
+- https://calculator.aws/
+- https://docs.aws.amazon.com/cost-management/latest/userguide/budgets-create.html
+
 ## How to get started?
 
 ### Pre-Reqs
