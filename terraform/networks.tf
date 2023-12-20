@@ -30,10 +30,10 @@ resource "aws_subnet" "example_http_subnet" {
   cidr_block              = "10.0.1.0/24"  # Replace with your desired subnet CIDR block
   availability_zone       = "eu-west-2"  # Replace with your desired availability zone
   map_public_ip_on_launch = true
-  route_table_association {
-    subnet_id      = aws_subnet.example_http_subnet.id
-    route_table_id = aws_route_table.example_public_rt.id
-  }
+#   route_table_association {
+#     subnet_id      = aws_subnet.example_http_subnet.id
+#     route_table_id = aws_route_table.example_public_rt.id
+#   }
 }
 
 # Create a security group for HTTP
