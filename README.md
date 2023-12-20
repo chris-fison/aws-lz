@@ -2,7 +2,7 @@
 
 ## An AWS Landing Zone Project
 
-A great launchpad for anyone wanting to DevOps their TF code and make life a bit easier.
+A launchpad for anyone wanting to DevOps their TF code and make life a bit easier.
 
 I wanted to learn more about the DevOps lifecycle of how to manage IaC utilizing automation where possible.
 
