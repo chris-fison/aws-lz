@@ -71,7 +71,7 @@ Whilst thats cooking, let me go through the folder structure of what you should 
 
 This contains all your Docker components which your local system will use to build out the container.
 
-You can modify the extensions if you don't need them, but the idea is your team would use the same extensions, so everyone is using the same version of terraform etc.
+You can modify the extensions if you don't need them, but the idea is your team would use this docker configuration and thus the same extensions, so everyone is using the same version of terraform etc.
 
 A few standouts here are formatting code when saved, such as correct indentation, or 'rainbow' indentation so its easier to see, handy for JSON, theres also a TODO so easier to work as teams on issues. 
 
