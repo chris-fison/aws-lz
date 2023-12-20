@@ -1,6 +1,6 @@
-# Welcome to Fisontech-AWS-LZ
+# Welcome to my AWS-LZ
 
-## A Git Repo for the start of an AWS Landing Zone Project
+## An AWS Landing Zone Project
 
 A great launchpad for anyone wanting to DevOps their TF code and make life a bit easier.
 
