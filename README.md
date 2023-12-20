@@ -67,7 +67,6 @@ Copy paste the following into VSC, it'll do more stuff.
 
 ```
 code --install-extension ms-vscode-remote.remote-containers
-git checkout -b production
 ```
 
 You'll at this point probably want to get the cloned git up to your own git repo, once done read the rest of the documentation below as theres further configuration needed and I explain what things do.
@@ -175,8 +174,14 @@ terraform {
 }
 ```
 
-
 Once you've hit save and synced with your repo, you should see github actions kick off (use the extension to monitor).
+
+If it doesn't run, then you might need to perform the following:
+
+```
+git checkout -b production
+```
+This is because the job only runs on a branch called production.
 
 ### Closing Notes
 
