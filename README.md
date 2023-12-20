@@ -1,5 +1,7 @@
 # Welcome to my AWS-LZ
 
+![Alt text](image.png)
+
 ## An AWS Landing Zone Project
 
 A launchpad for anyone wanting to DevOps their TF code and make life a bit easier.
