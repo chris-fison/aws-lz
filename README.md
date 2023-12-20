@@ -33,7 +33,10 @@ git clone https://github.com/chris-fison/aws-lz.git
 . code
 ```
 
+**Visual Studio Code**
+
 ```
+code --install-extension ms-vscode-remote.remote-containers
 git checkout -b production
 ```
 
@@ -41,7 +44,13 @@ You'll at this point probably want to get the cloned git up to your own git repo
 
 ### Ok, so what did I just do and what am I looking at?
 
-Firstly, let me go through the folder structure of what you should see in VSC.
+Firstly, let me go through the folder structure of what you should see in VSC but quickly lets get Docker building before we do;
+
+In VSC, assuming you followed the pre-reqs step, you'll see a prompt to re-open in container, if you don't then press ctrl+shift+P and select re-open in container, it should use the files in .devcontainer.
+
+It'll take a couple minutes depending on what spec of potato you're running this all on.
+
+So onto the structure of the repo;
 
 **.devcontainer**
 
