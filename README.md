@@ -1,5 +1,6 @@
-# aws-lz
-A Git Repo for a basic AWS Landing Zone Project
+# Welcome to AWS-LZ
+
+## A Git Repo for a basic AWS Landing Zone Project
 
 A great launchpad for anyoone wanting to DevOps ther TF code and make life a bit easier.
 
@@ -11,11 +12,11 @@ What does this git include?
 
 How to use this repo;
 
-**Pre-requisites**
+Pre-Reqs
 
 You'll need to perform the following on your system to get the best of this repo;
 
-**System BIOS**
+System BIOS
  - Enable Virtualization in BIOS (Docker Support)
 
 **Windows Terminal **
@@ -31,7 +32,7 @@ You'll need to perform the following on your system to get the best of this repo
 
 You'll at this point probably want to push the cloned git up to your own git repo, once done read the rest of the docucumentation as theres further configuration needed and I explain what things do.
 
-**How to Use**
+How to Use
 
 .devcontainer
  - devcontainer.json 
@@ -124,4 +125,4 @@ Create a new branch each time you make a series of changes, i.e;
 
 - git checkout -b production-adding-vpc
 
-You can then 
+The pull that branch into the production branch, so rather than always working on the production branch, you branch off it and then make your changes (i.e adding a VPC), then you merge them into production and someone approves and merges.
