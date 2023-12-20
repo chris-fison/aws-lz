@@ -17,19 +17,25 @@ What does this git include?
 You'll need to perform the following on your system to get the best of this repo;
 
 **System BIOS**
+
  - Enable VRT Virtualization in BIOS, else Docker will cry when you try running it later, this will save you an hour or so on stackoverflow I guarantee you.
 
 **Windows Terminal**
 
- - winget install -e --id Microsoft.VisualStudioCode
- - winget install -e --id Docker.DockerDesktop
- - winget install -e --id Git.Git
- - winget install -e --id GitHub.cli
- - mkdir C:\Git\Projects
- - sl C:\Git\Projects
- - git clone https://github.com/chris-fison/aws-lz.git
- - . code
- - git checkout -b production
+```
+winget install -e --id Microsoft.VisualStudioCode
+winget install -e --id Docker.DockerDesktop
+winget install -e --id Git.Git
+winget install -e --id GitHub.cli
+mkdir C:\Git\Projects
+sl C:\Git\Projects
+git clone https://github.com/chris-fison/aws-lz.git
+. code
+```
+
+```
+git checkout -b production
+```
 
 You'll at this point probably want to get the cloned git up to your own git repo, once done read the rest of the docucumentation below as theres further configuration needed and I explain what things do.
 
@@ -65,6 +71,7 @@ You'll need to create an S3 bucket within your AWS tenant, all default settings,
 
 Attach the following policy;
 
+```
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -89,6 +96,7 @@ Attach the following policy;
         }
     ]
 }
+```
 
 The policy on the bucket allows your IAM user access to the state folder you'll be creating later.
 
@@ -106,6 +114,7 @@ Now, this tfuser will be what the CICD pipeline uses to check in/out state files
 
 Lastly, you'll need to create a DynamoDB table called for example fisontech-tfstate as this will help with the lock state of the terraform state file. All default settings, key used will be LockID. 
 
+
 **terraform**
 
  - backend
@@ -116,6 +125,7 @@ Contains all your Terraform components which your local docker container will ho
 
 In backend, you'll need to change the following based on what you created above.
 
+```
 terraform {
   backend "s3" {
     bucket         = "fisontech-tfstate"
@@ -124,6 +134,8 @@ terraform {
     dynamodb_table = "fisontech-tfstate"
   }
 }
+```
+
 
 Once you've hit save and synced with your repo, you should see github actions kick off (use the extention to monitor).
 
