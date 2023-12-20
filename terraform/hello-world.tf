@@ -1,72 +1,61 @@
-# # provider "aws" {
-# #   region = "us-east-1"  # Replace with your desired AWS region
-# # }
-
-# # Create a simple HTML file
-# data "aws_ami" "latest_amazon_linux" {
-#   most_recent = true
-#   owners      = ["amazon"]
-
-#   filter {
-#     name   = "name"
-#     values = ["amzn2-ami-hvm-*-x86_64-gp2"]
-#   }
+# provider "aws" {
+#   region = "us-east-1"  # Specify your desired AWS region
 # }
 
-# resource "aws_s3_bucket_object" "html" {
-#   bucket = "fisontech-hellow-world"
-#   key    = "index.html"
-#   acl    = "public-read"
+# Create VPC, Subnet, and Security Group
+resource "aws_vpc" "example_vpc" {
+  cidr_block = "10.0.0.0/16"
+}
 
-#   source = <<-EOT
-#     <!DOCTYPE html>
-#     <html>
-#     <head>
-#       <title>Hello, World!</title>
-#     </head>
-#     <body>
-#       <h1>Hello, World!</h1>
-#     </body>
-#     </html>
-#   EOT
-# }
+resource "aws_subnet" "example_subnet" {
+  vpc_id     = aws_vpc.example_vpc.id
+  cidr_block = "10.0.1.0/24"
+}
 
-# # Create ECS task definition
-# resource "aws_ecs_task_definition" "hello_world" {
-#   family                   = "hello-world"
-#   network_mode             = "awsvpc"
-#   requires_compatibilities = ["FARGATE"]
+resource "aws_security_group" "example_security_group" {
+  vpc_id = aws_vpc.example_vpc.id
+  // You may need to adjust these ingress rules based on your specific needs
+  ingress {
+    from_port = 80
+    to_port   = 80
+    protocol  = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
 
-#   container_definitions = jsonencode([
-#     {
-#       name  = "hello-world-container"
-#       image = "nginx:latest"
-#       portMappings = [
-#         {
-#           containerPort = 80
-#           hostPort      = 80
-#         },
-#       ],
-#       essential = true,
-#     },
-#   ])
-# }
+# Create ECS Task Definition
+resource "aws_ecs_task_definition" "example_task" {
+  family                   = "example-task"
+  network_mode             = "awsvpc"
+  requires_compatibilities = ["FARGATE"]
 
-# # Create ECS Fargate service
-# resource "aws_ecs_service" "hello_world_service" {
-#   name            = "hello-world-service"
-#   cluster         = "default"  # Replace with your ECS cluster name
-#   task_definition = aws_ecs_task_definition.hello_world.arn
-#   launch_type     = "FARGATE"
+  container_definitions = jsonencode([
+    {
+      name  = "example-container"
+      image = "nginx:latest"  # Replace with your Docker image URL
 
-#   network_configuration {
-#     subnets = ["subnet-xxxxxxxxxxxxxxxxx", "subnet-yyyyyyyyyyyyyyyyy"]  # Replace with your subnet IDs
-#     security_groups = ["sg-xxxxxxxxxxxxxxxxx"]  # Replace with your security group ID
-#   }
+      portMappings = [
+        {
+          containerPort = 80
+          hostPort      = 80
+        },
+      ]
+    },
+  ])
+}
 
-#   depends_on = [aws_ecs_task_definition.hello_world]
-# }
+# Create ECS Service
+resource "aws_ecs_service" "example_service" {
+  name            = "example-service"
+  cluster         = "default"  # Replace with your ECS cluster name
+  task_definition = aws_ecs_task_definition.example_task.arn
 
-# output "website_url" {
-#   value = aws_ecs_service.hello_world_service.load_balancer[0].dns_name
-# }
+  launch_type = "FARGATE"
+
+  network_configuration {
+    subnets = [aws_subnet.example_subnet.id]
+    security_groups = [aws_security_group.example_security_group.id]
+  }
+
+  depends_on = [aws_ecs_task_definition.example_task]
+}
