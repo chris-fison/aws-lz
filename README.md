@@ -50,7 +50,9 @@ A few standouts here are formatting code when saved, such as correct indentation
 
 This contains all your github action components which your git account will use to build out its container to run Terraform code.
 
-To put it simply, this will be your CICD pipeline which activates on activity on the main branch - it'll use an S3, DynamoDB and IAM user you'll create below.
+To put it simply, this will be your CICD pipeline which activates on activity on the production branch, in the terraform folder - this is more so the action wont run when you change anything outside the folder, else its annoying.
+
+The solution will require an S3, DynamoDB and IAM user you'll create below.
 
 You'll need to create an S3 bucket within your AWS tenant, all default settings, enable versioning and SSE AWS KMS (SSE-KMS).
 
