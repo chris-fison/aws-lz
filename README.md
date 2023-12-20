@@ -18,10 +18,10 @@ As time goes on I'll be further developing this git, as I learn and improve.
 
 I doubt very much, things to think about;
 
-GitHub Repo - Free.
-GitHub Actions - Free up-to a certain amount of X minutes/runs, generally as TF code is quick to run (depending on scale), you shouldn't hit your Free limit.
-Docker - Free to install and run locally, for what we need this for its fine.
-AWS Account - Free (CC is required for sign-up).
+- GitHub Repo - Free.
+- GitHub Actions - Free up-to a certain amount of X minutes/runs, generally as TF code is quick to run (depending on scale), you shouldn't hit your Free limit.
+- Docker - Free to install and run locally, for what we need this for its fine.
+- AWS Account - Free (CC is required for sign-up).
 - S3 costs pence to run, very minimal.
 - DynamoDB costs a little bit more, very minimal though.
 - Resources, only VPCs are deployed for the example.
