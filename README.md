@@ -1,26 +1,34 @@
-# Welcome to AWS-LZ
+# Welcome to Fisontech-AWS-LZ
 
-## A Git Repo for a basic AWS Landing Zone Project
+## A Git Repo for the start of an AWS Landing Zone Project
 
-A great launchpad for anyoone wanting to DevOps ther TF code and make life a bit easier.
+A great launchpad for anyone wanting to DevOps their TF code and make life a bit easier.
 
-What does this git include?
+I wanted to learn more about the DevOps lifecycle of how to manage IaC utilizing automation where possible.
 
-- Containerized local Docker with full Terraform, AWS CLI and various other extentions to help keep your team aligned. Fully integrated into Visual Studio Code.
+As time goes on I'll be further developing this git, as I learn and improve.
+
+## What does this git include?
+
+- Containerized local Docker with full Terraform, AWS CLI and various other extensions to help keep your team aligned. Fully integrated into Visual Studio Code.
 - A CICD pipeline which will spin up a container which will use a IAM role in AWS to create Terraform resources, it'll also store Terraform state in S3 and utilize DynamoDB for LockIDs.
 - An example of a resource (VPC) deployed as part of the terraform code.
 
-## How to get started.
+## How to get started?
 
 ### Pre-Reqs
 
-You'll need to perform the following on your system to get the best of this repo;
+You'll need to perform the following on your system to get the best of this repo, mainly as nothing will work if you don't.
 
 **System BIOS**
 
  - Enable VRT Virtualization in BIOS, else Docker will cry when you try running it later, this will save you an hour or so on stackoverflow I guarantee you.
 
+You can find out how to get into your BIOS by using a popular search engine, generally once you know the F key, you'll reboot and spam that key until you reach the BIOS screen.
+
 **Windows Terminal**
+
+Copy/paste the following into the terminal, it'll do stuff.
 
 ```
 winget install -e --id Microsoft.VisualStudioCode
@@ -35,22 +43,25 @@ git clone https://github.com/chris-fison/aws-lz.git
 
 **Visual Studio Code**
 
+
+Copy paste the following into VSC, it'll do more stuff.
+
 ```
 code --install-extension ms-vscode-remote.remote-containers
 git checkout -b production
 ```
 
-You'll at this point probably want to get the cloned git up to your own git repo, once done read the rest of the docucumentation below as theres further configuration needed and I explain what things do.
+You'll at this point probably want to get the cloned git up to your own git repo, once done read the rest of the documentation below as theres further configuration needed and I explain what things do.
 
 ### Ok, so what did I just do and what am I looking at?
 
-Firstly, let me go through the folder structure of what you should see in VSC but quickly lets get Docker building before we do;
+Firstly, quickly lets get Docker building before we do;
 
 In VSC, assuming you followed the pre-reqs step, you'll see a prompt to re-open in container, if you don't then press ctrl+shift+P and select re-open in container, it should use the files in .devcontainer.
 
 It'll take a couple minutes depending on what spec of potato you're running this all on.
 
-So onto the structure of the repo;
+Whilst thats cooking, let me go through the folder structure of what you should see in VSC.
 
 **.devcontainer**
 
@@ -60,11 +71,11 @@ So onto the structure of the repo;
 
 This contains all your Docker components which your local system will use to build out the container.
 
-You can modify the extentions if you don't need them, but the idea is your team would use the same extentions, so everyone is using the same version of terraform etc.
+You can modify the extensions if you don't need them, but the idea is your team would use the same extensions, so everyone is using the same version of terraform etc.
 
-A few standouts here are formatting code when saved, such as correct indentation, or rainbox indentation so its easier to see, handy for JSON. 
+A few standouts here are formatting code when saved, such as correct indentation, or 'rainbow' indentation so its easier to see, handy for JSON, theres also a TODO so easier to work as teams on issues. 
 
-Once you've built the container you can use the filter @installed to see what's there.
+Once you've built the container you can use the filter @installed to see what's there, and remove what you don't need, but each time to rebuild a container it'll re-add so remove from .json if needed.
 
 **.github**
 
@@ -109,11 +120,11 @@ Attach the following policy;
 
 The policy on the bucket allows your IAM user access to the state folder you'll be creating later.
 
-Create a role witin IAM, call it something like tf-user, give it admin permissions (this isnt production dont worry).
+Create a role within IAM, call it something like tf-user, give it admin permissions (this isn't production don't worry).
 
-If you want to be more linear with permissions then pick atleast S3 and DynamoDB, but as this role will likely be creating EC2s, VPCs etc then you will probably make do with AWSAdministratorAccess for now. 
+If you want to be more linear with permissions then pick at least S3 and DynamoDB, but as this role will likely be creating EC2s, VPCs etc then you will probably make do with AWSAdministratorAccess for now. 
 
-Honestly, it's upto you though - no pressure.
+Honestly, it's up to you though - no pressure.
 
 Also inside AWS, now generate AWS credentials for the tf-user, select 3rd party webapp and note the SECRET/PASS down.
 
@@ -146,7 +157,7 @@ terraform {
 ```
 
 
-Once you've hit save and synced with your repo, you should see github actions kick off (use the extention to monitor).
+Once you've hit save and synced with your repo, you should see github actions kick off (use the extension to monitor).
 
 ### Closing Notes
 
@@ -156,6 +167,14 @@ I would suggest the following;
 
 Create a new branch each time you make a series of changes, i.e;
 
-- git checkout -b production-adding-vpc
+```
+git checkout -b production-adding-vpc
+```
 
-The pull that branch into the production branch, so rather than always working on the production branch, you branch off it and then make your changes (i.e adding a VPC), then you merge them into production and someone approves and merges.
+Then pull that branch into the production branch, so rather than always working on the production branch, you branch off it and then make your changes (i.e adding a VPC), then you merge them into production and someone approves and merges.
+
+Start the cycle over, create a new branch using same command (changing vpc) and repeat the process.
+
+Cheers!
+
+Reference articles here; tbc
