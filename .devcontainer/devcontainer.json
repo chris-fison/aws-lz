@@ -1,7 +1,7 @@
 {
-    "name": "Fisontech AWS Terraform",
+    "name": "AWS Terraform",
     "build": {
-      "dockerfile": "Dockerfile",
+      "dockerfile": "aws-terraform",
       "args": {
         "VARIANT": "ubuntu-22.04",
         "TERRAFORM_DOCS_VERSION": "0.16.0",
@@ -14,7 +14,6 @@
       "vscode": {
           "extensions": [
             "ms-vscode.powershell",
-            // "ms-vscode-remote.remote-wsl",
             "github.vscode-github-actions",
             "donjayamanne.githistory",
             "hashicorp.terraform",
