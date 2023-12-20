@@ -10,16 +10,17 @@ What does this git include?
 - A CICD pipeline which will spin up a container which will use a IAM role in AWS to create Terraform resources, it'll also store Terraform state in S3 and utilize DynamoDB for LockIDs.
 - An example of a resource (VPC) deployed as part of the terraform code.
 
-How to use this repo;
+## How to get started.
 
-Pre-Reqs
+### Pre-Reqs
 
 You'll need to perform the following on your system to get the best of this repo;
 
-System BIOS
- - Enable Virtualization in BIOS (Docker Support)
+**System BIOS**
+ - Enable VRT Virtualization in BIOS, else Docker will cry when you try running it later, this will save you an hour or so on stackoverflow I guarantee you.
 
-**Windows Terminal **
+**Windows Terminal**
+
  - winget install -e --id Microsoft.VisualStudioCode
  - winget install -e --id Docker.DockerDesktop
  - winget install -e --id Git.Git
@@ -30,22 +31,28 @@ System BIOS
  - . code
  - git checkout -b production
 
-You'll at this point probably want to push the cloned git up to your own git repo, once done read the rest of the docucumentation as theres further configuration needed and I explain what things do.
+You'll at this point probably want to get the cloned git up to your own git repo, once done read the rest of the docucumentation below as theres further configuration needed and I explain what things do.
 
-How to Use?
+### Ok, so what did I just do and what am I looking at?
 
-.devcontainer
+Firstly, let me go through the folder structure of what you should see in VSC.
+
+**.devcontainer**
+
  - devcontainer.json 
  - dockerfile
  - post-start.sh
 
 This contains all your Docker components which your local system will use to build out the container.
 
-You can modify the extentions if you don't need them, but the idea is your team would use the same extentions, so everyone is using the same version.
+You can modify the extentions if you don't need them, but the idea is your team would use the same extentions, so everyone is using the same version of terraform etc.
 
-A few standouts here are formatting code when saved, such as correct indentation. Once you've built the container you can use the filter @installed to see what's there.
+A few standouts here are formatting code when saved, such as correct indentation, or rainbox indentation so its easier to see, handy for JSON. 
 
-.github
+Once you've built the container you can use the filter @installed to see what's there.
+
+**.github**
+
  - terraform.yml
 
 This contains all your github action components which your git account will use to build out its container to run Terraform code.
@@ -99,7 +106,8 @@ Now, this tfuser will be what the CICD pipeline uses to check in/out state files
 
 Lastly, you'll need to create a DynamoDB table called for example fisontech-tfstate as this will help with the lock state of the terraform state file. All default settings, key used will be LockID. 
 
-terraform
+**terraform**
+
  - backend
  - main
  - network
@@ -118,6 +126,8 @@ terraform {
 }
 
 Once you've hit save and synced with your repo, you should see github actions kick off (use the extention to monitor).
+
+### Closing Notes
 
 The next thing to look at, is how you merge your repos to safeguard the environment.
 
