@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-20.04
     defaults:
       run:
-        working-directory: ${{ env.tf_actions_working_dir }}
+        working-directory: terraform/fisontech_ws
     permissions:
       contents: read
       pull-requests: write
