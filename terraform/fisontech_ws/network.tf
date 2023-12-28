@@ -1,6 +1,5 @@
-module "my_vpc" {
-  source  = "terraform-aws-modules/vpc/aws"
-  version = "3.0.0"
+module "vpc" {
+  source = "terraform-aws-modules/vpc/aws"
 
   name                 = "my-vpc"
   cidr                 = "10.0.0.0/16"
@@ -11,10 +10,8 @@ module "my_vpc" {
   single_nat_gateway   = true
   enable_dns_support   = true
   enable_dns_hostnames = true
-  public_subnet_tags   = { "Tier" = "Public" }
-  private_subnet_tags  = { "Tier" = "Private" }
-}
-
-output "vpc_id" {
-  value = module.my_vpc.vpc_id
+  tags                 = {
+    Terraform   = "true"
+    Environment = "dev"
+  }
 }
