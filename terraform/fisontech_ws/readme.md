@@ -1,1 +1,0 @@
-Fisontech AWS Workspaces
