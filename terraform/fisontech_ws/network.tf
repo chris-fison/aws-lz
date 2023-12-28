@@ -1,6 +1,6 @@
 module "vpc" {
   source = "terraform-aws-modules/vpc/aws"
-  name = "fisontech-ws"
+  name = "fisontech_ws"
   cidr = "10.10.0.0/16"
   azs             = ["eu-west-2a", "eu-west-2b"]
   private_subnets = ["10.10.1.0/24", "10.10.2.0/24"]
@@ -15,17 +15,3 @@ module "vpc" {
     Environment = "Production"
   }
 }
-
-
-# resource "aws_vpc_dhcp_options" "dns_resolver" {
-#   domain_name_servers = aws_directory_service_directory.aws-managed-ad.dns_ip_addresses
-#   domain_name = "fisontech-ws.local"
-#   tags = {
-#     Name = "fisontech-ws-prod-dhcp-option"
-#     Environment = "Production"
-#   }
-# }
-# resource "aws_vpc_dhcp_options_association" "dns_resolver" {
-#   vpc_id = module.vpc.vpc_id
-#   dhcp_options_id = aws_vpc_dhcp_options.dns_resolver.id
-# }
