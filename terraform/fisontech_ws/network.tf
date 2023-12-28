@@ -17,15 +17,15 @@ module "vpc" {
 }
 
 
-resource "aws_vpc_dhcp_options" "dns_resolver" {
-  domain_name_servers = aws_directory_service_directory.aws-managed-ad.dns_ip_addresses
-  domain_name = "fisontech-ws.local"
-  tags = {
-    Name = "fisontech-ws-prod-dhcp-option"
-    Environment = "Production"
-  }
-}
-resource "aws_vpc_dhcp_options_association" "dns_resolver" {
-  vpc_id = module.vpc.vpc_id
-  dhcp_options_id = aws_vpc_dhcp_options.dns_resolver.id
-}
+# resource "aws_vpc_dhcp_options" "dns_resolver" {
+#   domain_name_servers = aws_directory_service_directory.aws-managed-ad.dns_ip_addresses
+#   domain_name = "fisontech-ws.local"
+#   tags = {
+#     Name = "fisontech-ws-prod-dhcp-option"
+#     Environment = "Production"
+#   }
+# }
+# resource "aws_vpc_dhcp_options_association" "dns_resolver" {
+#   vpc_id = module.vpc.vpc_id
+#   dhcp_options_id = aws_vpc_dhcp_options.dns_resolver.id
+# }
